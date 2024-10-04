@@ -1,0 +1,80 @@
+% Programa de Pizzería
+
+function pizzeria()
+    while true
+        % Mostrar menú
+        disp('Bienvenido a la Pizzería');
+        disp('1. Pizza Pequeña ($100)');
+        disp('2. Pizza Grande ($200)');
+        disp('3. Pizza Familiar ($300)');
+        disp('4. Salir');
+        
+        % Obtener selección del usuario
+        opcion = input('Seleccione el tamaño de la pizza (1-4): ');
+        
+        if opcion == 4
+            disp('Gracias por su visita. ¡Esperamos verle pronto!');
+            break;
+        elseif opcion < 1 || opcion > 3
+            disp('Opción no válida. Por favor, intente de nuevo.');
+            continue;
+        end
+        
+        % Obtener cantidad de pizzas e ingredientes adicionales
+        cantidad = input('Ingrese la cantidad de pizzas: ');
+        ingredientes = input('Ingrese el número de ingredientes adicionales: ');
+        
+        % Calcular el total
+        switch opcion
+            case 1
+                [total, mensaje] = calcularPequena(cantidad, ingredientes);
+            case 2
+                [total, mensaje] = calcularGrande(cantidad, ingredientes);
+            case 3
+                [total, mensaje] = calcularFamiliar(cantidad, ingredientes);
+        end
+        
+        % Mostrar resultado
+        disp(['Total a pagar: $', num2str(total)]);
+        disp(mensaje);
+        disp('¡Gracias por su compra! Esperamos verle pronto nuevamente.');
+        disp('----------------------------------------');
+    end
+end
+
+function [total, mensaje] = calcularPequena(cantidad, ingredientes)
+    precio_base = 100;
+    precio_ingrediente = 1.20;
+    total = cantidad * (precio_base + ingredientes * precio_ingrediente);
+    
+    if cantidad >= 3 && cantidad <= 5
+        total = total * 0.95; % 5% de descuento
+        mensaje = 'Pizza Pequeña con 5% de descuento aplicado.';
+    else
+        mensaje = 'Pizza Pequeña';
+    end
+end
+
+function [total, mensaje] = calcularGrande(cantidad, ingredientes)
+    precio_base = 200;
+    precio_ingrediente = 1.80;
+    total = cantidad * (precio_base + ingredientes * precio_ingrediente);
+    
+    if cantidad == 5
+        mensaje = 'Pizza Grande. ¡Se obsequia una pizza chica por la compra de 5!';
+    else
+        mensaje = 'Pizza Grande';
+    end
+end
+
+function [total, mensaje] = calcularFamiliar(cantidad, ingredientes)
+    precio_base = 300;
+    precio_ingrediente = 2.50;
+    total = cantidad * (precio_base + ingredientes * precio_ingrediente);
+    
+    if cantidad == 3
+        mensaje = 'Pizza Familiar. IVA incluido en el precio.';
+    else
+        mensaje = 'Pizza Familiar';
+    end
+end
