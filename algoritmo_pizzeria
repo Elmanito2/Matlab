@@ -1,0 +1,25 @@
+Análisis Preliminar del Programa de Pizzería
+Datos de Entrada
+
+TP: Tamaño o tipo de pizza (switch)
+Ning: Ingresar el número de ingredientes adicionales
+N1: Tamaño pequeño de pizza, pb1 = $100 (Constante)
+N2: Tamaño grande de pizza, pb2 = $200 (Constante)
+N3: Tamaño familiar de pizza, pb3 = $300 (Constante)
+cto1 = 1.20 (Costo por ingrediente adicional para pizza pequeña)
+cto2 = 1.80 (Costo por ingrediente adicional para pizza grande)
+cto3 = 2.50 (Costo por ingrediente adicional para pizza familiar)
+
+Datos de Salida
+
+TC: Mostrará total de compra
+Si PZA, N1 > 3 or N1 < 5, entonces dto = (TC * 0.05)
+
+Operaciones
+
+Caso 1 (Pizza Pequeña):
+TC = pb1 + (Ning * cto1ing) - dto
+Caso 2 (Pizza Grande):
+TC = pb2 + (Ning * cto2ing)
+Caso 3 (Pizza Familiar):
+TC = pb3 + (Ning * cto3ing)
