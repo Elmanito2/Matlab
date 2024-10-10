@@ -1,0 +1,5 @@
+% Algoritmo para imprimir los números impares de 100 a 1
+
+for i = 99:-2:1  % Empieza en 99 (el mayor número impar menor que 100) y va descendiendo de 2 en 2
+    disp(i)       % Imprime el número impar actual
+end
