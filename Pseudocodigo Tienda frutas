@@ -1,0 +1,95 @@
+INICIO
+carrito = [] // Array para almacenar productos
+precios = {
+    "manzana": 20,
+    "platano": 15,
+    "naranja": 18,
+    "pera": 22,
+    "uva": 25
+}
+FUNCION menuPrincipal()
+    REPETIR
+        MOSTRAR "=== TIENDA DE FRUTAS ==="
+        MOSTRAR "1. Agregar producto al carrito"
+        MOSTRAR "2. Ver carrito"
+        MOSTRAR "3. Eliminar producto"
+        MOSTRAR "4. Calcular total"
+        MOSTRAR "5. Salir"
+        LEER opcion
+
+        SEGUN opcion
+            CASO 1: agregarProducto()
+            CASO 2: verCarrito()
+            CASO 3: eliminarProducto()
+            CASO 4: calcularTotal()
+            CASO 5: SALIR
+        FIN SEGUN
+    HASTA opcion = 5
+FIN FUNCION
+
+FUNCION agregarProducto()
+    MOSTRAR "Ingrese nombre de la fruta:"
+    LEER nombreFruta
+    
+    SI precios[nombreFruta] EXISTE ENTONCES
+        MOSTRAR "Ingrese cantidad:"
+        LEER cantidad
+        producto = {
+            "nombre": nombreFruta,
+            "cantidad": cantidad,
+            "precio": precios[nombreFruta]
+        }
+        
+        carrito.agregar(producto)
+        MOSTRAR "Producto agregado exitosamente"
+    SINO
+        MOSTRAR "Fruta no disponible"
+    FIN SI
+FIN FUNCION
+
+FUNCION verCarrito()
+    SI carrito.estaVacio() ENTONCES
+        MOSTRAR "El carrito está vacío"
+    SINO
+        PARA CADA producto EN carrito
+            MOSTRAR producto.nombre + " - Cantidad: " + producto.cantidad
+        FIN PARA
+    FIN SI
+FIN FUNCION
+
+FUNCION eliminarProducto()
+    MOSTRAR "Ingrese nombre del producto a eliminar:"
+    LEER nombreProducto
+    
+    encontrado = FALSO
+    PARA CADA producto EN carrito
+        SI producto.nombre = nombreProducto ENTONCES
+            carrito.eliminar(producto)
+            encontrado = VERDADERO
+            MOSTRAR "Producto eliminado exitosamente"
+        FIN SI
+    FIN PARA
+    
+    SI NO encontrado ENTONCES
+        MOSTRAR "Producto no encontrado en el carrito"
+    FIN SI
+FIN FUNCION
+
+FUNCION calcularTotal()
+    total = 0
+    
+    PARA CADA producto EN carrito
+        subtotal = producto.cantidad * producto.precio
+        total = total + subtotal
+    FIN PARA
+ 
+    SI total > 200 ENTONCES
+        descuento = total * 0.05
+        total = total - descuento
+        MOSTRAR "Se aplicó un descuento del 5%"
+    FIN SI
+    
+    MOSTRAR "Total a pagar: $" + total
+FIN FUNCION
+menuPrincipal()
+FIN
