@@ -1,0 +1,23 @@
+Algoritmo VerificarJubilacion
+    Definir edad Como Entero
+    Definir sexo Como Caracter
+    Escribir ("Ingrese su edad: ");
+    Leer (edad);
+    
+    Escribir ("Ingrese su sexo (M para masculino, F para femenino): ");
+    Leer (sexo);
+    Si (sexo = "M" O sexo = "m") Entonces
+        Si edad >= 60 Entonces
+            Escribir ("Usted ya puede jubilarse");
+        Sino
+            Escribir ("Aún no puede jubilarse, le faltan ", 60 - edad, " años");
+        FinSi
+    Sino
+        Si edad >= 54 Entonces
+            Escribir ("Usted ya puede jubilarse");
+        Sino
+            Escribir ("Aún no puede jubilarse, le faltan ", 54 - edad, " años");
+        FinSi
+    FinSi
+    
+FinAlgoritmo
